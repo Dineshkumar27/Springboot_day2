@@ -1,0 +1,94 @@
+
+Spring Boot
+
+Spring boot is basically an extention of Spring Framework which eliminates the boiler plate
+configuration required for setting up the Spring Application
+
+
+Features
+-Stand alone application
+-Embeded Server(Tomcat)
+-3rd party libraries
+-will give you metrics about application
+-no xml
+-very powerfull with started template
+-basic setups will be done faster
+-cloud support
+-Bean scan will be done automatically
+-minimal configuration
+
+How Spring Boot works?
+
+It detects dependencies available on classpath and configures the spring bean accordingly.
+
+@ConditionOnClass
+@ConditionlOnBean
+@ConditionlOnMissingBean
+
+applies these conditions to Spring configuration classes or bean
+
+
+Order
+
+After build Order.jar+Tomcat=Fat Jar
+
+
+
+Using Undertow server
+<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+			
+			
+Profiles
+--------
+
+
+
+App1  ---> configuration(application.properties)-> DB,KAFKA->(DEV, QA, PROD)
+
+DEV H2(inmemory database of Spring Boot)
+QA - MySQL 
+
+Implement the profiles using Component
+
+1. Interface DB Component
+2. Class H2DBComponent implements DBComponent-DEV
+3. Class MySQLDBComponent implements DBComponent-PreProd
+
+properties
+spring.profiles.active=prod
+
+Components
+@Profile("prod")
+
+
+Creating RestAPI using Spring Boot
+
+
+@PathVariable
+localhost:8080/user/1/dfdfdfdf
+
+
+@RequestParameter
+localhost:8080/user/1/dfdfdfdf?username=comcast&branch=chennai
+pathvariables /1/dfdfdfdf
+requestparameters are username=comcast&branch=chennai
+
+
+localhost:8080/reqparam?name=comcast&email=comast@chennai
+
+after giving required=false
+
+localhost:8080/reqparam?name=comcast
+
+the request parameters are comcast and email id is null
+
+After giving default value
+
+localhost:8080/reqparam?name=comcast
+
+the request parameters are comcast and email id is xyz@gmail.com
