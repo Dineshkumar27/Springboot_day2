@@ -4,6 +4,7 @@ package com.example.restapiapplication.controller;
 import com.example.restapiapplication.model.Employee;
 import com.example.restapiapplication.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 @RequestMapping("/v1/employee")
 public class EmployeeController {
 
+    @Qualifier("employeeImpl")
     @Autowired
     private EmployeeService employeeService;
 

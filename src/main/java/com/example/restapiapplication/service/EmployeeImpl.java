@@ -2,6 +2,7 @@ package com.example.restapiapplication.service;
 
 import com.example.restapiapplication.error.EmployeeNotFoundException;
 import com.example.restapiapplication.model.Employee;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -47,6 +48,16 @@ public class EmployeeImpl implements EmployeeService{
 
         employees.remove(employee);
         return "deleted "+employee.getEmployeId();
+    }
+
+    @Override
+    public List<Employee> findByEmployeeNameLikeOrderByDepartment(String name) {
+        return List.of();
+    }
+
+    @Override
+    public List<Employee> searchEmployeeByNameLike(String name, Sort sort) {
+        return List.of();
     }
 
 
